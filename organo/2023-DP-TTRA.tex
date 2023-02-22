@@ -1,0 +1,296 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = 2023-DP-TTRA.tex
+%----------------------------------------------------------------- LANGUAGES ---
+\newcommand{\mylanguages}{italian,english} % in reverse order
+%---------------------------------------------------------- TITLE & SUBTITLE ---
+\newcommand{\mytitle}{Tecniche di Ripresa e Registrazione Audio}
+\newcommand{\mysubtitle}{Pratiche sperimentali di registrazione dell'organo a canne, \\ differenti approcci di ripresa del suono}
+%----------------------------------------------------------------- AUTHOR(s) ---
+\newcommand{\authorone}{Doralma A. Palestra}
+\newcommand{\institutione}{Conservatorio N. Piccinni di Bari}
+\newcommand{\emailone}{doralma.palestra@gmail.com}
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------- STYLE GS2020 ---
+\input{gs2022.tex}
+%------------------------------------------------------------ BEGIN DOCUMENT ---
+\begin{document}
+\maketitle TECNICHE DI REGISTRAZIONE
+\thispagestyle{empty}
+%-------------------------------------------------------------------- ABSTRACT -
+% The abstract is an external txt file inside the includes folder
+%-------------------------------------------------------------------------------
+\section*{Per una ripresa dell'organo a canne}
+dotato della sua complessità timbrica e spaziale, 
+gli approcci possono essere molteplici e differenziati.
+Da una rappresentazione stereofonica che si àncora ad un punto di 
+vista ideale a livello di palco, fino ad una ripresa spaziata con tecnica 
+ambisonica.
+
+\section*{Spazio sonoro}
+Il dato spaziale è fondamentale nell'esperienza d'ascolto. La complessità
+ timbrica propria dell'organo necessita di uno spazio sonoro adeguato. 
+ Riguardo l'incisione dei suoni su supporto, la molteplicità delle 
+ interpretazioni possibili ha restituito differenti approcci, i quali 
+ rappresentano il suono in modi differenti tramite diverse configurazioni
+  spaziali dei set microfonici.   %-------------------------------------------------------------------------------
+\subsection*{Immagini sonore}
+Le differenti configurazioni assunte durante la registrazione restituiscono 
+dati sonori influenzati dal parametro spazio.
+La distanza dei microfoni dalla fonte sonora, determina un filtraggio dello 
+spettro sonoro, includendo elementi spaziali quali onde riflesse e coda 
+riverberante propria del luogo.
+La registrazione presa in esame riguarda l'organo a canne dell'Auditorium 
+del Conservatorio N. Piccinni di Bari.
+
+\begin{warn}[Differenti approcci: spazio e timbro]
+La scelta dei microfoni,- conoscendo le corrispondenti figure polari,- e del 
+loro posizionamento nello spazio, -distanza dalla sorgente, spazialità interna 
+al set microfonico, - costituiscono una scelta di rappresentazione del suono.
+Ogni configurazione restituisce uno o più punti dello spazio, e dunque una 
+specifica condizione d'ascolto.
+
+\end{warn}
+
+
+Per la ripresa audio sono stati creati tre set microfonici, con intenti e 
+possibilità di resa sonora specifiche. %-------------------------------------------------------------------------------
+
+\subsubsection*{Set Microfonici}
+La prima configurazione rappresenta un'immagine stereofonica che 
+rimarca la linea di palco, attraverso l'utilizzo di quattro canali:
+una coppia spaziata AB (chnls 3, 4) di microfoni ominidrezionali 
+(OM1- casa Line Audio), un setup ORTF, naturalmente costituito da 
+microfoni cardioidi (casa Schoeps).
+Il secondo setup di microfoni restituisce un'immagine ambisonica, prodotta 
+da quattro Omnidirezionali (OM1) disposti sulle facce di un tetraedro.
+La terza configurazione rappresenta un setup simile nella disposizione 
+delle capsule microfoniche, con una ripresa effettuata mediante sistema 
+SoundField, costituito invece da quattro sub-cardioidi.
+
+Le configurazioni microfoniche qui esposte sono state disposte ad una 
+distanza: adeguata alla timbrica dell'organo, coerente all'acustica e alle 
+risonanze della sala, ottimizzata rispetto al tipo di microfoni e di setup 
+predisposto.
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[width=.47\textwidth]{img/img0.jpeg}
+\caption{\textbf{}. 
+\label{gr01}
+\end{center}
+\end{figure}
+
+
+
+\section*{Strumenti di ascolto spaziale}
+L'esperienza sonora si lega per sua natura allo spazio in cui si diffondono 
+gli eventi. Disporre di molteplici registrazioni, effettuate a diverse distanze
+dalla fonte sonora, consente di effettuare operazioni 'impossibili', per poter 
+studiare i risultati sonori e compararli.
+
+\subsubsection*{MidSide per il Frontepalco}
+Per la rappresentazione 'frontale', si sceglie un trattamento dell'immagine 
+stereo tramite il metodo MS (MidSide), in cui i canali Left e Right vengono 
+posti in relazione a creare un'immagine che non presenta problemi di fase,
+e che mette in relazione il suon diretto (Mid) con il suono ambientale (Side).
+E' possibile applicare questa configurazione alla coppia spaziata AB e al setup 
+ORTF, tramite vst progettato in Faust.
+
+
+\begin{lstlisting}
+mspan(x,p,rad) = m,s
+with{
+  m = (p*x)+((1-p)*(x*cos(rad)));
+  s = x*(sin(-rad));
+};
+\end{lstlisting}
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[width=.47\textwidth]{img/img7.png}
+\caption{\textbf{}. 
+\label{gr01}
+\end{center}
+\end{figure}
+
+
+Questa prima configurazione, seppure descritta come frontale, 
+riporta all'interno del segnale la componente spaziale, fondamentale per la 
+rappresentazione dell'organo a canne.
+
+
+\subsubsection*{Immagine stereo sferica}
+
+Le due restanti configurazioni impiegano microfoni disposti sulle facce di un 
+tetraedro, per restiruire un'immagine stereo tridimensionale.
+Secondo questa logica, un gradiente di pressione omnidirezionale W agisce 
+sulle coordinate forntali dell'asse X, su quelle coordinate verticali sull'asse Z 
+e sulle coordinate orizzontali che corrono sull'asse Y.
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[width=.47\textwidth]{img/img10.png}
+\caption{\textbf{}. 
+\label{gr01}
+\end{center}
+\end{figure}
+
+I dati che corrispondo al segnale ambisonico,- forniti dalla prima configurazione 
+attraverso un dispositivo soundfield (4 subcardioidi, che generano 3 figure a 8), 
+o da un terzo dispositivo tetraedrico dotato di quattro omindirezionali, - sono 
+distinti quali A-format.
+
+I quattro segnali ripresi dai microfoni in A-format (ambiosonico del secondo ordine), 
+sono da decodificare in B format (ambiosonico del terzo ordine), in cui i segnali 
+saranno combinati a formare una figura omnidirezionale e tre figure a 8.
+Tale decodifica consente di assegnare figure polari e combinarle successivamente 
+in numero e combinazioni differenti, anche dopo la registrazione, tramite dsp. 
+E' possibile, ad esempio, generare da quattro segnali otto canali.
+In questo modo, il microfono soundfiled, o il dispositivo tetraedrico non rappresenta
+solo una di coppie coincidenti ravvicinate, che creano 3 figure a 8, con gradiente
+di pressione sferico, ma costituiscono la base di un lavoro creativo e sperimentale
+molto più vasto.
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[width=.47\textwidth]{img/img9.png}
+\caption{\textbf{}. 
+\label{gr01}
+\end{center}
+\end{figure}
+
+
+\begin{lstlisting}
+mspan(x,p,rad) = m,s
+with{
+  X = 0.5((LF–LB) + (RF–RB));
+ Y = 0.5((LF–RB) – (RF–LB);
+  Z = 0.5((LF–LB) + (RB–RF));
+   W = 0.5(LF+LB+RF+RB);
+};
+\end{lstlisting}
+
+In conclusione, la ripresa soundfield può essere considerata come una 
+naturale estensione della logica Mid-Side, dove i segnali che viaggiano 
+su differenti canali vengono posti in relazione e manipolati per gestire 
+l'immagine stereo.
+
+Il MidSide consente di allargare o stringere l'immagine stereo, focalizzando
+il missaggio dei segnali sulla sorgente, o viceversa sullo spazio risonante.
+Il setup Ambisonico consente di manipolare il punto di ascolto nello spazio, 
+gestendo la compjnente delle coordinate dello spazio tridimensionale.
+
+
+      
+ \subsection*{Muovere le distanze}
+ Uno strumento utile per comprendere l'approccio ad un ascolto delle 
+ caratteristiche risonanti de luoghi, e in conseguenza al filtraggio che 
+ lo spazio stesso effettua sul timbro, è l'osservazione e l'ascolto,
+ dei differetni risultati sonori rappresentati dalle differenti configurazioni.
+ 
+ E' possibile parlare anche di ambiente ambisonico ibrido, quando si impiega
+ per la ripresa un ORTF accanto al SoundField.
+ 
+ La possibilità di ravvicinare la fonte sonora, includere la componente spaziale
+ più o meno rispetto al segnale ripreso in fase di registrazione, sono operazioni
+ che derivano dalla logica del MidSide e della gestione dell'immagine stereo,
+tramite signal processing, ad oggi digitale.
+
+Poter modificare il punto di ascolto, gestire le risonanze, dedicando ad ogni
+componente un canale adeguato, permette di restituire un suono che sia il 
+risultato delle scelte consapevoli, e dunque artistiche, di chi conduce la registrazione.
+
+La possibilità do avvalersi di una ripresa tridimensionale amplifica l'area di azione
+dell'autore della ripresa microfonica. 
+
+
+
+ 
+\section*{Conclusioni}
+  In definitiva, la ripresa di un segnale audio, richiede abilità tecniche che non restano 
+  tuttavia mero tecnicismo, ma riflettono una scelta artistica guidata dalla precisa 
+  interpretazione del suono e della perfomance in registrazione.
+  
+  Le tecniche di ripresa e registrazione, sono il passo precedente al trattamento del 
+  segnale audio, ma ancora entro il processo creativo di rappresentazione del suono.
+  
+  Se la musica è linguaggio delle emozioni, la restituzione su supporto degli eventi
+  sonori si fa interprete di quel linguaggio che, a seconda del pensiero che lo supporta, 
+ assume un vocabolario, una punteggiatura e un'intenzione specifica e inscindibile dal 
+ risultato finale, che sarà quello che segnerà il significato ultimo del discroso, quello che 
+ arriverà a scandire il tempo del fruitore.
+\vfill\null
+
+
+
+\newpage % USE NEWPAGE TO FORCE COLUMNN INTERRUPTION
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
+\begin{quote}
+La musica non e` solo composizione. \\
+Non è artigianato, non è un mestiere. \\
+La musica è pensiero. \cite{nono85}
+\end{quote}
+
+
+
+
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=.47\textwidth]{img/image2.jpg}
+%\caption{Mic Mapping}
+%\label{gs}
+%\end{figure}
+
+%\begin{equation}
+%m(x,p,\theta) = (p*x) + ((1-p)*(x\cos\theta)
+%\label{eq:mid}
+%\end{equation}
+%
+%Some predictions of general relativity differ significantly from those of
+%classical physics, especially concerning the passage of time, the geometry of
+%space, the motion of bodies in free fall, and the propagation of light.
+
+%--------------------------------------------
+%----------------larghezza massima del codice
+%\begin{lstlisting}
+%mspan(x,p,rad) = m,s
+%with{
+%  m = (p*x)+((1-p)*(x*cos(rad)));
+%  s = x*(sin(-rad));
+%};
+%\end{lstlisting}
+%
+%Examples of such differences include gravitational time dilation, gravitational
+%lensing, the gravitational redshift of light, and the gravitational time delay.
+%The predictions of general relativity in relation to classical physics have been
+%confirmed in all observations and experiments to date.
+
+%\vfill\null
+
+%\raggedright
+%%\bibliographystyle{unsrt}
+%\printbibliography
+
+\end{document}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2020 GIUSEPPE SILVI ARTICLE TEMPLATE BASED ON
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.4 (15/5/16)
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+% Original author:
+% Frits Wenneker (http://www.howtotex.com) with extensive modifications by
+% Vel (vel@LaTeXTemplates.com)
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
